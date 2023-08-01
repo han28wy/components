@@ -4,7 +4,7 @@ import Test from '../views/testAlert.vue';
 const routes: RouteRecordRaw[] = [
   // 其他路由配置
   {
-    path: '/test',
+    path: '/',
     name: 'Test',
     component: Test,
   },
