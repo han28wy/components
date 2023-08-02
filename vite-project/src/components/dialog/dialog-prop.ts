@@ -1,4 +1,5 @@
 export const dialogProps = {
+    visible:Boolean,
     /**
      * @description whether to align the header and footer in center
      */

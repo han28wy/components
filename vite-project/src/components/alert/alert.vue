@@ -9,12 +9,17 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+
 const className = computed(()=>{
     const {type, colorMode, center} = props
     return ['el-alert', `el-alert--${type}`, colorMode, center ? 'isCenter' : '']
 })
 const visible = ref(true)
 const props = defineProps({
+    visible: {
+        type: Boolean,
+        default: false
+    },
     title:{
         type: String,
         required: false,
