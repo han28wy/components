@@ -12,12 +12,9 @@
                 <slot></slot>
             </div>
             <!-- footer -->
-            <!-- <div class="el-dialog_footer">
+            <div class="el-dialog_footer">
                 <slot name="footer"></slot>
-            </div> -->
-            <template>
-                <slot name="footer" />
-            </template>
+            </div>
         </div>
 
     </div>
