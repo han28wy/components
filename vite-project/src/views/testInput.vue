@@ -1,5 +1,5 @@
 <template>
-    <TInput v-model="values" disabled></TInput>
+    <TInput v-model="values" :showWordLimit="true" :maxLength="20" disabled></TInput>
     <div>当前值:  {{ values }}</div>
 </template>
 
