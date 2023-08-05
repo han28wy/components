@@ -11,7 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-helpers": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "vue": "^2.5.2",
+    "vue-hot-reload-api": "^2.3.4",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
