@@ -1,3 +1,9 @@
+import {
+  isArray,
+  isBoolean,
+  isString,
+} from '../../utils/index'
+
 export const formProps = {
     size: {
         type: String,
@@ -71,3 +77,11 @@ export const formProps = {
     default: true,
   },
 }
+
+export const formEmits = {
+  validate: (prop: FormItemProp, isValid: boolean, message: string) =>
+    (isArray(prop) || isString(prop)) &&
+    isBoolean(isValid) &&
+    isString(message),
+}
+export type FormEmits = typeof formEmits

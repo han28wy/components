@@ -1,6 +1,6 @@
 <template>
     <div>
-    <!-- <TForm ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px"> -->
+    <TForm ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px">
         <TFormItem label="用户名" prop="username">
             <TInput v-model="ruleForm.username" />
         </TFormItem>
@@ -14,7 +14,7 @@
             <button @click="submitForm(ruleFormRef)">Submit</button>
             <button @click="resetForm(ruleFormRef)">Reset</button>
         </TFormItem>
-    <!-- </TForm> -->
+    </TForm>
 </div>
 </template>
 

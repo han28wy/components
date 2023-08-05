@@ -11,23 +11,38 @@
 </template>
 
 <script setup lang="ts">
-import { dispatch} from '../../utils/index'
-import { formItemProps } from './form-item'
-import {useSlots, ref, computed, onMounted,onBeforeUnmount, getCurrentInstance } from 'vue'
-const instance = getCurrentInstance();
-onMounted(() => {
-    if(props.prop){
-        dispatch('ElForm', 'el.form.addField', instance);
-        // this.addValidateEvents();
-    }
-})
-onBeforeUnmount(() => {
-    dispatch('ElForm', 'el.form.removeField', instance);
+import { FormItemProps } from './form-item'
+import {useSlots, nextTick, ref, inject, computed, onMounted,onBeforeUnmount, getCurrentInstance } from 'vue'
+import { formContextKey, formItemContextKey } from './constants'
+
+defineOptions({
+  name: 'ElFormItem',
 })
 
-const props = defineProps(formItemProps)
-// const emits = defineEmits(formItemEmits)
-// const slots = useSlots()
+const instance = getCurrentInstance();
+console.log("🚀 ~ file: form-item.vue:18 ~ instance:", instance)
+let initialValue: any = undefined
+const props = defineProps(FormItemProps)
+
+// const formContext = inject('addField',instance)
+const formContext = inject(formContextKey, undefined)
+
+const fieldValue = computed(() => {
+    const model = formContext?.model
+  return getProp(model, props.prop).value
+})
+onMounted(() => {
+  if (props.prop) {
+    formContext()
+    initialValue = fieldValue.value
+  }
+})
+
+onBeforeUnmount(() => {
+    inject('removeField',instance)
+    // dispatch('ElForm', 'el.form.removeField', instance);
+})
+
 const inputIds = ref<string[]>([])
 
 const labelFor =  computed<string | undefined>(() => {
@@ -38,10 +53,15 @@ return true
 })
 
 const currentLabel = computed(() => {
-    console.log('props.label',props.label)
     return props.label
     //实际上考虑 `${props.label || ''}${formContext?.labelSuffix || ''}`
 })
+
+const resetField = async ()=>{
+await nextTick()
+}
+
+
 </script>
 
 <style>
