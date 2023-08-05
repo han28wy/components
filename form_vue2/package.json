@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "async-validator": "^4.2.5",
     "babel-helpers": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "vue": "^2.5.2",

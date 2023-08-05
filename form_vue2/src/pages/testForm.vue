@@ -1,24 +1,53 @@
 <template>
-    <div>
-      <elFormItem label="uiui"><div>11t11</div></elFormItem>
-        <!-- <elForm>
-            <elFormItem label="阿斯达"><div>1111</div></elFormItem>
-        </elForm> -->
-    </div>
+  <div>
+    <TForm ref="form" :model="form">
+      <TFormItem label="活动名称" prop="name">
+        <TInput v-model="form.name"></TInput>
+      </TFormItem>
+      <TFormItem label="活动名称" prop="mobile">
+        <TInput v-model="form.mobile"></TInput>
+      </TFormItem>
+      <TFormItem label="活动名称" prop="date1">
+        <TInput v-model="form.date1"></TInput>
+      </TFormItem>
+      <TFormItem>
+        <button @click="onSubmit">立即创建</button>
+        <button @click="resetForm()">重置</button>
+      </TFormItem>
+    </TForm>
+  </div>
 </template>
 
 <script>
-import elForm from '../components/form/form.vue'
-import elFormItem from '../components/form/form-item.vue'
-
+import TForm from '../components/form/form.vue'
+import TFormItem from '../components/form/form-item.vue'
+import TInput from '../components/input/index.vue'
 export default {
   components: {
-    elForm,
-    elFormItem
+    TForm,
+    TFormItem,
+    TInput
   },
   data () {
     return {
-
+      form: {
+        name: 'name',
+        mobile: '12345',
+        date1: 'sss',
+        date2: 'aaaa',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      }
+    }
+  },
+  methods: {
+    onSubmit () {
+      console.log('submit!')
+    },
+    resetForm () {
+      this.$refs.form.resetFields()
     }
   }
 }

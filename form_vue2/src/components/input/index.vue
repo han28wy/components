@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { caculateLength } from '../../util/index'
+// import { caculateLength } from '../../util/index'
 export default {
   props: {
     value: {
