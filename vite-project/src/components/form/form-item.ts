@@ -1,4 +1,5 @@
 export const formItemProps = {
+    prop: String,
     label: String,
     value: String,
     rules: Array,
