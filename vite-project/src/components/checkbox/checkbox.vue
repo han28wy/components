@@ -1,7 +1,7 @@
 <template>
     <label class="el-checkbox" :class="{'is-bordered': props.border}">
         <span>
-            <input type="checkbox" @change="handleChange"/>
+            <input v-model="model" :value="props.label" :checked="currentValue" type="checkbox" @change="handleChange"/>
         </span>
         <span>{{props.label}}</span>
     </label>
@@ -9,16 +9,32 @@
 
 <script lang="ts" setup>
 import {checkboxProps} from './checkbox'
+import { ref, computed } from 'vue';
 
 const props = defineProps(checkboxProps);
 const emits = defineEmits(['change']);
 
-const handleChange = () => {
-    emits('change')
+const model = computed(()=>{})
+const isChecked = ref(false)
+
+const getLabeledValue = (value: string | number | boolean) => {
+    return value === props.trueLabel || value === true
+      ? props.trueLabel ?? true
+      : props.falseLabel ?? false
+ }
+
+const handleChange = (event: Event) => {
+
+    const checked = event.target.checked;
+    console.log("🚀 ~ file: checkbox.vue:30 ~ handleChange ~ checked:", checked)
+    currentValue.value = checked
+    const value = checked ? true : false
+    emits('update:modelValue', value)
+    const target = event.target as HTMLInputElement
+    emits('change', value, event)
 }
 
-
-
+const currentValue = ref(props.modelValue)
 </script>
 
 <style>

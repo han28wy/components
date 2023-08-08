@@ -1,12 +1,12 @@
 <template>
     <div>
         <span>checkboxGroup</span>
-        <CheckboxGroup v-model="checkboxGroup2" disabled>
-            <Checkbox label="备选项1" border></Checkbox>
+        <!-- <CheckboxGroup v-model="checkboxGroup2" disabled>
+            <Checkbox label="备选项1" border @change="handleChange"></Checkbox>
             <Checkbox label="备选项2" border></Checkbox>
-        </CheckboxGroup>
-        <!-- <span>checkbox</span>
-        <Checkbox v-model="checked" label="beixuan" border></Checkbox> -->
+        </CheckboxGroup> -->
+        <span>checkbox</span>
+        <Checkbox v-model="checked" label="beixuan" border @change="handleChange"></Checkbox>
     </div>
 </template>
 
@@ -17,4 +17,8 @@ import { ref } from 'vue'
 
 const checked = ref(true)
 const checkboxGroup2 = ref(false)
+
+const handleChange = () =>{
+    console.log('gggg   ', checked.value)
+}
 </script>
