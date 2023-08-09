@@ -8,6 +8,7 @@
             <Checkbox label="备选项4" border></Checkbox>
             <Checkbox label="备选项5" border></Checkbox>
         </CheckboxGroup>
+        <button @click="alertGroup">按钮</button>
         <!-- <span>checkbox</span>
         <Checkbox v-model="checked" label="beixuan" border @change="handleChange"></Checkbox> -->
     </div>
@@ -25,7 +26,11 @@ const handleChange = () =>{
     console.log('gggg   ', checked.value)
 }
 
-const handleChangeGroup(()=>{
+const handleChangeGroup = ()=>{
     console.log('fffff')
-})
+}
+
+const alertGroup = () => {
+    console.log('999   ', checkboxGroup2.value)
+}
 </script>
